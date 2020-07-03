@@ -1,15 +1,30 @@
 <section class="users-section">
-  <ul class="users-list">
-    <% @users.each do |user| %>
-    <li>
-      Name: <%= user.name %>
-      <span class="profile-link">
-        <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
-      </span>
-      <span class="profile-link">
-        <%= link_to 'Send an invitation', new_friendship_path(user), method: :post, class: 'profile-link' %>
-      </span>
-    </li>
-    <% end %>
-  </ul>
+    <ul class="users-list">
+        <% @users.each do |user| %>
+        <li>
+            Name: <%= user.name %>
+            <span class="profile-link">
+                <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+            </span>
+
+            <% if current_user.id != user.id %>
+            <% if current_user.friends.include?(user) %>
+            <span class="profile-link">
+                <p>Friended</p>
+            </span>
+            <% elsif current_user.pending_friends.include?(user) %>
+            <span>Invitation pending...</span>
+            <% elsif current_user.friend_requests.include?(user) %>
+            <%= link_to "(Accept friendship request)", friendship_path(user.id), method: :put, class: 'profile-link' %>
+            <% else %>
+            <span class="profile-link">
+                <%= link_to 'Send an invitation', new_friendship_path(user), method: :post, class: 'profile-link' %>
+            </span>
+            <% end %>
+            <% end %>
+
+
+        </li>
+        <% end %>
+    </ul>
 </section>
