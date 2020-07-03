@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :likes, only: [:create, :destroy]
   end
 
-  post 'user/:id/friendship', to: 'friendship#create', as: 'new_friendship'
+  post 'user/:id/friendship', to: 'friendships#create', as: 'new_friendship'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
