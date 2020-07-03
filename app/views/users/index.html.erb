@@ -10,15 +10,15 @@
             <% if current_user.id != user.id %>
             <% if current_user.friends.include?(user) %>
             <span class="profile-link">
-                <%= link_to 'Remove friend', unfriendship_path(user), method: :delete, class: 'profile-link' %>
+                <%= link_to 'Remove friend', unfriendship_path(user), method: :delete, id: 'unfriendship-link' %>
             </span>
             <% elsif current_user.pending_friends.include?(user) %>
             <span>Invitation pending...</span>
             <% elsif current_user.friend_requests.include?(user) %>
-            <%= link_to "(Accept friendship request)", friendship_path(user.id), method: :put, class: 'profile-link' %>
+            <%= link_to "(Accept friendship request)", friendship_path(user.id), method: :put, id: 'accept-invitation-link' %>
             <% else %>
             <span class="profile-link">
-                <%= link_to 'Send an invitation', new_friendship_path(user), method: :post, class: 'profile-link' %>
+                <%= link_to 'Send an invitation', new_friendship_path(user), method: :post, id: 'send-invitation-link' %>
             </span>
             <% end %>
             <% end %>
