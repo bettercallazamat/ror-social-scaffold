@@ -23,7 +23,7 @@ class FriendshipsController < ApplicationController
     else
       flash[:alert] = 'It was not possible to accept this friendship. Try again later.'
     end
-    
+
     redirect_to users_path
   end
 end
