@@ -43,12 +43,4 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
-
-  config.before(:all) do
-    User.create(name: 'Sergio Zambrano', email: 'sergiomauz@mail.com', password: '123456')
-    User.create(name: 'Felipe Rosa', email: 'felipe@mail.com', password: '123456')
-    User.create(name: 'Selena Perez', email: 'selena@mail.com', password: '123456')
-    User.create(name: 'Elvis Presley', email: 'elvis@mail.com', password: '123456')
-    User.create(name: 'Heitor Nunes', email: 'heitor@mail.com', password: '123456')
-  end
 end
