@@ -42,6 +42,13 @@ RSpec.describe 'Friendship', type: :feature do
       it 'gets a message "Friendship accepted!"' do
         expect(page).to have_content('Friendship accepted!')
       end
+
+      it 'creates mutual Friendship"' do
+        user1 = User.find(1)
+        user2 = User..find(4)
+        expect(user1.friends.include?(user2)).to be true
+        expect(user2.friends.include?(user1)).to be true
+      end
     end
   end
 end
