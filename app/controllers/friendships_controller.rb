@@ -15,8 +15,9 @@ class FriendshipsController < ApplicationController
   end
 
   def update
-    friendship = Friendship.where(user_id: params[:id], friend_id: current_user.id)[0]
-    friendship.update(confirmed: true)
+    friendship1 = Friendship.where(user_id: params[:id], friend_id: current_user.id)[0]
+    friendship1.update(confirmed: true)
+    friendship2 = Friendship.create(user_id: current_user.id, friend_id: params[:id], confirmed: true)
 
     if friendship
       flash[:notice] = 'Friendship accepted!'
@@ -28,9 +29,11 @@ class FriendshipsController < ApplicationController
   end
 
   def destroy
-    friendship = Friendship.where(user_id: current_user.id, friend_id: params[:id])[0]
-    if friendship
-      friendship.destroy
+    friendship1 = Friendship.where(user_id: current_user.id, friend_id: params[:id])[0]
+    friendship1 = Friendship.where(user_id: params[:id], friend_id: current_user.id)[0]
+    if friendship1 && friendship2
+      friendship1.destroy
+      friendship2.destroy
       flash[:notice] = 'Friendship removed'
     else
       flash[:alert] = 'It was not possible to remove this friendship. Try again later.'
