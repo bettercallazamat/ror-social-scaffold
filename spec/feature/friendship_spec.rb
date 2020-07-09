@@ -36,7 +36,7 @@ RSpec.describe 'Friendship', type: :feature do
     context 'when accepts a friendship request' do
       before(:each) do
         visit users_path
-        find('li', text: 'User4').click_link('(Accept friendship request)') 
+        find('li', text: 'User4').click_link('(Accept friendship request)')
       end
 
       it 'gets a message "Friendship accepted!"' do
