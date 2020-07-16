@@ -13,22 +13,21 @@ class User < ApplicationRecord
   has_many :friendships
   has_many :friends, through: :friendships, class_name: 'User', foreign_key: 'user_id'
 
+  has_many :confirmed_friendships, -> { where confirmed: true }, class_name: 'Friendship'
+  has_many :confirmed_friends, through: :confirmed_friendships, source: :friend, foreign_key: 'user_id'
+
+  has_many :pending_friendships, -> { where confirmed: false }, class_name: 'Friendship'
+  has_many :pending_friends, through: :pending_friendships, source: :friend, foreign_key: 'friend_id'
+
+  has_many :friendship_requests, -> { where confirmed: false }, class_name: 'Friendship'
+  has_many :requesting_friends, through: :friendship_requests, source: :user, foreign_key: 'user_id'
+
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
-
-  def friends
-    friends_array = friendships.map { |friendship| friendship.friend if friendship.confirmed }
-    friends_array += inverse_friendships.map { |friendship| friendship.user if friendship.confirmed }
-    friends_array.compact
-  end
-
-  # Users who have yet to confirme friend requests
-  def pending_friends
-    friendships.map { |friendship| friendship.friend unless friendship.confirmed }.compact
-  end
+  has_many :inverse_friends, through: :inverse_friendships, source: :user, foreign_key: 'user_id'
 
   # Users who have requested to be friends
-  def friend_requests
-    inverse_friendships.map { |friendship| friendship.user unless friendship.confirmed }.compact
+  def friend_request?(id)
+    inverse_friendships.where(user_id: id).any?
   end
 
   def confirm_friend(user)
@@ -38,6 +37,8 @@ class User < ApplicationRecord
   end
 
   def friend?(user)
-    friends.include?(user)
+    return true if friends.find(user.id)
+
+    false
   end
 end

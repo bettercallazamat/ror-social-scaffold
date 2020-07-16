@@ -31,7 +31,7 @@ class FriendshipsController < ApplicationController
   def destroy
     friendship1 = Friendship.where(user_id: current_user.id, friend_id: params[:id])[0]
     friendship2 = Friendship.where(user_id: params[:id], friend_id: current_user.id)[0]
-    if friendship1 && friendship2
+    if friendship1
       friendship1.destroy
       friendship2.destroy
       flash[:notice] = 'Friendship removed'
