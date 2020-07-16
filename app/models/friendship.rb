@@ -11,6 +11,12 @@ class Friendship < ApplicationRecord
 
   def confirm_friendship
     update(confirmed: true)
-    Friendship.create(user_id: self.friend_id, friend_id: self.user_id, confirmed: true)
+    Friendship.create(user_id: friend_id, friend_id: user_id, confirmed: true)
+  end
+
+  def remove_friendship
+    destroy
+    friendship = Friendship.where(user_id: friend_id, friend_id: user_id, confirmed: true)[0]
+    friendship.destroy
   end
 end
