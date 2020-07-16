@@ -16,8 +16,7 @@ class FriendshipsController < ApplicationController
 
   def update
     friendship1 = Friendship.where(user_id: params[:id], friend_id: current_user.id)[0]
-    friendship1.update(confirmed: true)
-    friendship2 = Friendship.create(user_id: current_user.id, friend_id: params[:id], confirmed: true)
+    friendship2 = friendship1.confirm_friendship
 
     if friendship1 && friendship2
       flash[:notice] = 'Friendship accepted!'
