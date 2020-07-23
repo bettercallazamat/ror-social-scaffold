@@ -1,6 +1,13 @@
 # Scaffold for social media app with Ruby on Rails
 
-> This project prototype of social media app with basic styling.
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+
+## This project prototype of social media app with basic styling.
+
+> This project is focused to master the skills setting MVP in Ruby on Rails. This repository follows the instructions of [Microverse's pathwright](https://microverse.pathwright.com/library/fast-track-curriculum/69047/path/step/49736080/). The final code is reviewed by a [Microverse](https://www.microverse.org/) Technical Support Engineer TSE that supervises, makes suggestions and approves the completeness of the final product.
 
 ## Built With
 
