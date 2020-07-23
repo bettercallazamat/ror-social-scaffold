@@ -1,3 +1,4 @@
+# rubocop:disable Layout/LineLength
 module FriendshipsHelper
   def friendship_status(user)
     return nil unless current_user.id != user.id
@@ -13,7 +14,8 @@ module FriendshipsHelper
       content += link_to 'Reject friendship request', reject_friendship_path(user.id), method: :delete, id: 'reject-invitation-link', class: 'profile-link'
       content.html_safe
     else
-      link_to 'Send an invitation', new_friendship_path(user), method: :post, id: 'send-invitation-link', class: 'profile-link' 
+      link_to 'Send an invitation', new_friendship_path(user), method: :post, id: 'send-invitation-link', class: 'profile-link'
     end
   end
 end
+# rubocop:enable Layout/LineLength
