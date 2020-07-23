@@ -1,6 +1,13 @@
 # Scaffold for social media app with Ruby on Rails
 
-> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+
+## This project prototype of social media app with basic styling.
+
+> This project is focused to master the skills setting MVP in Ruby on Rails. This repository follows the instructions of [Microverse's pathwright](https://microverse.pathwright.com/library/fast-track-curriculum/69047/path/step/49736080/). The final code is reviewed by a [Microverse](https://www.microverse.org/) Technical Support Engineer TSE that supervises, makes suggestions and approves the completeness of the final product.
 
 ## Built With
 
@@ -9,7 +16,7 @@
 
 ## Live Demo
 
-TBA
+[Try live demo!](https://calm-plateau-22909.herokuapp.com/)
 
 
 ## Getting Started
@@ -55,31 +62,30 @@ Open `http://localhost:3000/` in your browser.
     rpsec --format documentation
 ```
 
-> Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
-
-### Deployment
-
-TBA
-
 ## Authors
 
-TBA
+👤 **Azamat Nuriddinov**
+
+- Github: [@bettercallazamat](https://github.com/bettercallazamat)
+- Twitter: [@azamat_nuriddin](https://twitter.com/azamat_nuriddin)
+- Linkedin: [Azamat Nuriddinov](https://www.linkedin.com/in/azamat-nuriddinov-57579868)
 
 ## 🤝 Contributing
 
-Contributions, issues and feature requests are welcome!
+Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](issues/).
+Feel free to submit a new suggestion > [issues page](issues/).
 
 ## Show your support
 
 Give a ⭐️ if you like this project!
 
-## Acknowledgments
-
-TBA
-
-## 📝 License
-
-TBA
+[contributors-shield]: https://img.shields.io/github/contributors/bettercallazamat/ror-social-scaffold.svg?style=flat-square
+[contributors-url]: https://github.com/bettercallazamat/ror-social-scaffold/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/bettercallazamat/ror-social-scaffold.svg?style=flat-square
+[forks-url]: https://github.com/bettercallazamat/ror-social-scaffold/network/members
+[stars-shield]: https://img.shields.io/github/stars/bettercallazamat/ror-social-scaffold.svg?style=flat-square
+[stars-url]: https://github.com/bettercallazamat/ror-social-scaffold/stargazers
+[issues-shield]: https://img.shields.io/github/issues/bettercallazamat/ror-social-scaffold.svg?style=flat-square
+[issues-url]: https://github.com/bettercallazamat/ror-social-scaffold/issues
 

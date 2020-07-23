@@ -35,6 +35,11 @@ a {
   color: $primary-color-text;
 }
 
+a:hover {
+  text-decoration: underline;
+  color: $primary-color-dark;
+}
+
 .nav {
   display: flex;
   justify-content: space-between;
@@ -74,6 +79,14 @@ a {
   flex-direction: column;
   align-items: center;
   padding: 16px;
+
+  .profile-link {
+    font-size: 0.9em;
+    padding: 2px 7px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    color: $primary-color-dark;
+  }
 }
 
 .notice,
@@ -294,9 +307,17 @@ form {
   }
 
   .profile-link {
-    font-size: 0.8em;
-    margin: 0 0 8px 0;
+    font-size: 0.7em;
+    margin: 0;
+    padding: 2px 7px;
+    border: 1px solid #444;
+    border-radius: 5px;
     color: $primary-color-dark;
+  }
+
+  .profile-link:hover {
+    background-color: #d4f6c6;
+    color: $primary-color-text;
   }
 }
 
