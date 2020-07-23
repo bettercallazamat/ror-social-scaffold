@@ -6,49 +6,41 @@ RSpec.describe 'Friendship', type: :feature do
     User.create(name: 'User2', email: 'user2@mail.com', password: '123123')
     User.create(name: 'User3', email: 'user3@mail.com', password: '123123')
     User.create(name: 'User4', email: 'user4@mail.com', password: '123123')
-    User.create(name: 'User5', email: 'user5@mail.com', password: '123123')
     User.find(1).friendships.create(friend_id: 3, confirmed: true)
     User.find(3).friendships.create(friend_id: 1, confirmed: true)
     User.find(4).friendships.create(friend_id: 1, confirmed: false)
-    User.find(5).friendships.create(friend_id: 1, confirmed: false)
   end
 
-  context 'when logged in User1' do
+  context 'when logged in as User1' do
     before(:each) do
       visit new_user_session_path
       fill_in 'user_email', with: 'user1@mail.com'
       fill_in 'user_password', with: '123123'
       find("input[type='submit']").click
+      visit users_path
     end
 
     it 'sends an invitation to a new friend' do
-      visit users_path
+      # visit users_path
       find('li', text: 'User2').click_link('Send an invitation')
       expect(page).to have_content('Invitation sent')
     end
 
     it 'removes a friend' do
-      visit users_path
+      # visit users_path
       find('li', text: 'User3').click_link('Remove friend')
       expect(page).to have_content('Friendship removed')
     end
 
-    context 'when accepts a friendship request' do
-      before(:each) do
-        visit users_path
-        find('li', text: 'User4').click_link('(Accept friendship request)')
-      end
+    it 'accepts friendship and creates mutual friendship' do
+      # visit users_path
+      click_link('Accept friendship request')
+      expect(page).to have_content('Friendship accepted!')
 
-      it 'gets a message "Friendship accepted!"' do
-        expect(page).to have_content('Friendship accepted!')
-      end
-
-      it 'creates mutual Friendship"' do
-        user1 = User.find(1)
-        user2 = User..find(4)
-        expect(user1.friends.include?(user2)).to be true
-        expect(user2.friends.include?(user1)).to be true
-      end
+      user1 = User.find(1)
+      user2 = User.find(4)
+      expect(user1.friend?(user2)).to be true
+      expect(user2.friend?(user1)).to be true
     end
   end
 end
