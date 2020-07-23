@@ -15,7 +15,7 @@ class FriendshipsController < ApplicationController
   end
 
   def update
-    friendship1 = Friendship.where(user_id: params[:id], friend_id: current_user.id)[0]
+    friendship1 = current_user.inverse_friendships.where(user_id: params[:id])[0]
     friendship2 = friendship1.confirm_friendship
 
     if friendship1 && friendship2
@@ -28,7 +28,7 @@ class FriendshipsController < ApplicationController
   end
 
   def destroy
-    friendship = Friendship.where(user_id: current_user.id, friend_id: params[:id])[0]
+    friendship = current_user.friendships.where(friend_id: params[:id])[0]
     friendship.remove_friendship
     if friendship
       flash[:notice] = 'Friendship removed'
