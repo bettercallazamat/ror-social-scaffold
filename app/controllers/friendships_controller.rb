@@ -2,10 +2,10 @@ class FriendshipsController < ApplicationController
   def new; end
 
   def create
-    user = User.find(current_user.id)
-    friendship = user.friendships.new(user_id: current_user.id, friend_id: params[:id], confirmed: false)
+    friendship = current_user.friendships.new(friend_id: params[:id], confirmed: false)
+    # friendship = current_user.friendships.build(friend_id: params[:id], confirmed: false)
 
-    if user.inverse_friendships.where(user_id: params[:id]).none? && friendship.save
+    if current_user.inverse_friendships.where(user_id: params[:id]).none? && friendship.save
       flash[:notice] = 'Invitation sent'
     else
       flash[:alert] = 'Invitation failed'
@@ -39,7 +39,7 @@ class FriendshipsController < ApplicationController
   end
 
   def destroy2
-    friendship = Friendship.where(user_id: params[:id], friend_id: current_user.id)[0]
+    friendship = current_user.inverse_friendships.where(user_id: params[:id])[0]
     if friendship
       friendship.destroy
       flash[:notice] = 'Friendship rejected'
